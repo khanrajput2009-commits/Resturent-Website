@@ -4,7 +4,7 @@ A modern, elegant, and fully responsive website for a restaurant built using HTM
 
 ## 🚀 Live Demo
 Check out the live website here: 
-[https://khanrajput2009-commits.github.io/Restaurant-Website/](https://khanrajput2009-commits.github.io/Restaurant-Website/)
+ https://khanrajput2009-commits.github.io/Resturent-Website/
 
 ---
 
