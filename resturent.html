@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Saffron House | Fine Dining</title>
+
+  <style>
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #0e0d0b;
+      color: #f8f3e9;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    :root {
+      --gold: #d6a84f;
+      --gold-light: #f0ce7b;
+      --dark: #0e0d0b;
+      --dark-2: #171512;
+      --card: #1b1915;
+      --cream: #f8f3e9;
+      --muted: #aaa397;
+      --border: rgba(255,255,255,.1);
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(14,13,11,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d5cec0;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .reservation-btn {
+      background: var(--gold);
+      color: #17120a !important;
+      padding: 11px 18px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .reservation-btn:hover {
+      background: var(--gold-light);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background:
+        linear-gradient(
+          rgba(10,8,5,.72),
+          rgba(10,8,5,.88)
+        ),
+        radial-gradient(
+          circle at 70% 40%,
+          #6b4b1c55,
+          transparent 35%
+        ),
+        linear-gradient(120deg, #18130d, #0e0d0b);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px solid rgba(214,168,79,.15);
+      border-radius: 50%;
+      right: -130px;
+      top: 100px;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 8vw, 95px);
+      line-height: .98;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 570px;
+      color: #bbb3a5;
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 23px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: .3s;
+      display: inline-block;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #17120a;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(214,168,79,.45);
+      color: var(--cream);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(214,168,79,.1);
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       SECTION COMMON
+    ========================= */
+
+    section {
+      padding: 105px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 55px;
+    }
+
+    .section-heading small {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 500;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: var(--dark-2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-visual {
+      height: 520px;
+      border: 1px solid rgba(214,168,79,.2);
+      background:
+        radial-gradient(
+          circle at center,
+          #d6a84f22,
+          transparent 35%
+        ),
+        linear-gradient(145deg, #262016, #100e0a);
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .plate {
+      width: 290px;
+      height: 290px;
+      border-radius: 50%;
+      border: 12px solid #ded5c4;
+      box-shadow:
+        0 0 0 3px #817765,
+        0 25px 80px rgba(0,0,0,.7);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, #b6782e, #6b3415 55%, #30170c);
+      font-size: 80px;
+    }
+
+    .about-text small {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .about-text h2 {
+      font-size: clamp(35px, 5vw, 55px);
+      line-height: 1.05;
+      margin: 15px 0 22px;
+      font-weight: 500;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .signature {
+      color: var(--gold-light);
+      font-style: italic;
+      font-size: 25px;
+      margin-top: 25px;
+    }
+
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu-section {
+      background: var(--dark);
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 18px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .tab.active,
+    .tab:hover {
+      background: var(--gold);
+      color: #161008;
+      border-color: var(--gold);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 60px;
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 23px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .menu-item h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .menu-item p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .price {
+      color: var(--gold-light);
+      font-size: 19px;
+    }
+
+
+    /* =========================
+       SPECIAL
+    ========================= */
+
+    .special {
+      background:
+        linear-gradient(
+          rgba(10,8,5,.8),
+          rgba(10,8,5,.92)
+        ),
+        radial-gradient(
+          circle at 50% 30%,
+          #8d642a44,
+          transparent 45%
+        );
+      text-align: center;
+    }
+
+    .special-box {
+      border: 1px solid rgba(214,168,79,.25);
+      padding: 75px 30px;
+      max-width: 850px;
+      margin: auto;
+      background: rgba(24,20,14,.55);
+    }
+
+    .special-box h2 {
+      font-size: clamp(38px, 6vw, 65px);
+      font-weight: 500;
+      margin: 12px 0;
+    }
+
+    .special-box p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+
+
+    /* =========================
+       CHEF
+    ========================= */
+
+    .chef {
+      background: var(--dark-2);
+    }
+
+    .chef-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .chef-image {
+      height: 500px;
+      background:
+        linear-gradient(145deg, #3b2b19, #15120e);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 110px;
+    }
+
+    .chef-text small {
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .chef-text h2 {
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 500;
+      line-height: 1.05;
+      margin: 15px 0 20px;
+    }
+
+    .chef-text p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      margin-bottom: 18px;
+    }
+
+
+    /* =========================
+       REVIEWS
+    ========================= */
+
+    .reviews {
+      background: var(--dark);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
+
+    .review p {
+      color: #c2bbaf;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .review h4 {
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       RESERVATION
+    ========================= */
+
+    .reservation {
+      background: var(--dark-2);
+    }
+
+    .reservation-box {
+      max-width: 950px;
+      margin: auto;
+      border: 1px solid rgba(214,168,79,.2);
+      padding: 50px;
+      background: #13110e;
+    }
+
+    .reservation-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #b9b0a1;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: #1d1a15;
+      color: white;
+      outline: none;
+      border-radius: 3px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .reservation-form button {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+    }
+
+
+    /* =========================
+       CONTACT / FOOTER
+    ========================= */
+
+    .contact {
+      padding-bottom: 50px;
+      background: var(--dark);
+      text-align: center;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .contact-info div {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .contact-info strong {
+      display: block;
+      color: var(--gold-light);
+      margin-bottom: 5px;
+    }
+
+    footer {
+      padding: 25px 0;
+      background: #090806;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: #777168;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 4%;
+        width: 92%;
+        background: #15130f;
+        border: 1px solid var(--border);
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .reservation-btn {
+        display: none;
+      }
+
+      .about-grid,
+      .chef-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-visual,
+      .chef-image {
+        height: 400px;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reservation-box {
+        padding: 25px;
+      }
+
+      .reservation-form {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full,
+      .reservation-form button {
+        grid-column: auto;
+      }
+
+      .contact-info {
+        gap: 25px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+
+    <div class="container">
+
+      <nav>
+
+        <a href="#home" class="logo">
+          SAFFRON<span>.</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#chef">Chef</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li>
+            <a href="#reservation" class="reservation-btn">
+              Reserve a Table
+            </a>
+          </li>
+        </ul>
+
+        <button class="menu-btn" id="menuBtn">
+          ☰
+        </button>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero" id="home">
+
+    <div class="container">
+
+      <div class="hero-content reveal">
+
+        <div class="eyebrow">
+          Fine Dining · Karachi
+        </div>
+
+        <h1>
+          Taste the art of
+          <span>extraordinary.</span>
+        </h1>
+
+        <p>
+          An intimate dining experience where traditional flavors
+          meet modern culinary artistry. Welcome to Saffron House.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#menu" class="btn btn-gold">
+            Explore Our Menu
+          </a>
+
+          <a href="#reservation" class="btn btn-outline">
+            Book a Table
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="about-grid">
+
+        <div class="about-visual reveal">
+          <div class="plate">
+            🍛
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+
+          <small>Our Story</small>
+
+          <h2>
+            Where tradition
+            meets imagination.
+          </h2>
+
+          <p>
+            Saffron House began with a simple idea:
+            take the flavors we grew up loving and give them
+            a modern expression.
+          </p>
+
+          <p>
+            Every dish is prepared with carefully sourced
+            ingredients, traditional techniques and a little
+            bit of creativity.
+          </p>
+
+          <div class="signature">
+            — Chef Arman
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MENU
+  ========================= -->
+
+  <section class="menu-section" id="menu">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+
+        <small>Our Menu</small>
+
+        <h2>
+          A feast for the senses.
+        </h2>
+
+        <p>
+          Seasonal ingredients, timeless recipes and unexpected
+          combinations.
+        </p>
+
+      </div>
+
+
+      <div class="menu-tabs">
+
+        <button class="tab active" data-category="all">
+          All
+        </button>
+
+        <button class="tab" data-category="starters">
+          Starters
+        </button>
+
+        <button class="tab" data-category="mains">
+          Mains
+        </button>
+
+        <button class="tab" data-category="desserts">
+          Desserts
+        </button>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+        <div class="menu-item reveal" data-category="starters">
+
+          <div>
+            <h3>Saffron Chicken Tikka</h3>
+            <p>
+              Charcoal grilled chicken, saffron yogurt,
+              mint and pickled onions.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 1,450
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="starters">
+
+          <div>
+            <h3>Truffle Samosa</h3>
+            <p>
+              Crisp pastry, potato, herbs and black truffle.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 850
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="mains">
+
+          <div>
+            <h3>Slow Cooked Lamb</h3>
+            <p>
+              Twelve-hour braised lamb, saffron rice and
+              roasted garlic sauce.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 2,850
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="mains">
+
+          <div>
+            <h3>Royal Biryani</h3>
+            <p>
+              Fragrant basmati, tender meat, saffron and
+              caramelized onions.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 2,200
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="mains">
+
+          <div>
+            <h3>Butter Garlic Prawns</h3>
+            <p>
+              Tiger prawns, garlic butter, chili and
+              coriander oil.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 2,450
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="mains">
+
+          <div>
+            <h3>Smoked Paneer</h3>
+            <p>
+              House-smoked paneer, tomato reduction and
+              crispy naan.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 1,650
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="desserts">
+
+          <div>
+            <h3>Saffron Kulfi</h3>
+            <p>
+              Traditional kulfi, pistachio and rose petals.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 650
+          </div>
+
+        </div>
+
+
+        <div class="menu-item reveal" data-category="desserts">
+
+          <div>
+            <h3>Dark Chocolate Fondant</h3>
+            <p>
+              Warm chocolate cake, vanilla ice cream
+              and sea salt.
+            </p>
+          </div>
+
+          <div class="price">
+            Rs. 850
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SPECIAL
+  ========================= -->
+
+  <section class="special">
+
+    <div class="container">
+
+      <div class="special-box reveal">
+
+        <div class="eyebrow">
+          Chef's Special
+        </div>
+
+        <h2>
+          The Saffron Tasting Menu
+        </h2>
+
+        <p>
+          Seven courses inspired by the flavors of the
+          subcontinent, paired with our signature beverages.
+        </p>
+
+        <div style="margin-bottom:25px;color:#d6a84f;font-size:22px;">
+          Rs. 5,500 per person
+        </div>
+
+        <a href="#reservation" class="btn btn-gold">
+          Reserve Experience
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CHEF
+  ========================= -->
+
+  <section class="chef" id="chef">
+
+    <div class="container">
+
+      <div class="chef-grid">
+
+        <div class="chef-image reveal">
+          👨‍🍳
+        </div>
+
+        <div class="chef-text reveal">
+
+          <small>Meet The Chef</small>
+
+          <h2>
+            Cooking is our
+            <span style="color:#d6a84f;">
+              love language.
+            </span>
+          </h2>
+
+          <p>
+            Chef Arman has spent over 15 years exploring
+            kitchens across Asia and Europe.
+          </p>
+
+          <p>
+            His philosophy is simple: respect the ingredient,
+            honor the tradition and never stop experimenting.
+          </p>
+
+          <a href="#reservation" class="btn btn-outline">
+            Dine With Us
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       REVIEWS
+  ========================= -->
+
+  <section class="reviews" id="reviews">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+
+        <small>Guestbook</small>
+
+        <h2>
+          What our guests say.
+        </h2>
+
+      </div>
+
+
+      <div class="review-grid">
+
+        <div class="review reveal">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            "Absolutely beautiful. The lamb was one of the
+            best dishes I've had in years. Every detail felt
+            thoughtfully considered."
+          </p>
+
+          <h4>
+            — Ayesha R.
+          </h4>
+
+        </div>
+
+
+        <div class="review reveal">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            "The atmosphere is elegant without being stuffy,
+            and the food is exceptional. Saffron House is now
+            our favorite date-night spot."
+          </p>
+
+          <h4>
+            — Hamza K.
+          </h4>
+
+        </div>
+
+
+        <div class="review reveal">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            "From the welcome to dessert, everything was
+            perfect. The tasting menu is an experience
+            everyone should try."
+          </p>
+
+          <h4>
+            — Sara M.
+          </h4>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       RESERVATION
+  ========================= -->
+
+  <section class="reservation" id="reservation">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+
+        <small>Reservations</small>
+
+        <h2>
+          Your table awaits.
+        </h2>
+
+        <p>
+          Book your table and make your evening memorable.
+        </p>
+
+      </div>
+
+
+      <div class="reservation-box reveal">
+
+        <form class="reservation-form" id="reservationForm">
+
+          <div class="form-group">
+
+            <label>
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              placeholder="Your name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Phone Number
+            </label>
+
+            <input
+              type="tel"
+              placeholder="+92 300 1234567"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Date
+            </label>
+
+            <input
+              type="date"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Time
+            </label>
+
+            <select required>
+
+              <option value="">
+                Select time
+              </option>
+
+              <option>
+                6:00 PM
+              </option>
+
+              <option>
+                7:00 PM
+              </option>
+
+              <option>
+                8:00 PM
+              </option>
+
+              <option>
+                9:00 PM
+              </option>
+
+              <option>
+                10:00 PM
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Guests
+            </label>
+
+            <select required>
+
+              <option>
+                2 Guests
+              </option>
+
+              <option>
+                3 Guests
+              </option>
+
+              <option>
+                4 Guests
+              </option>
+
+              <option>
+                5 Guests
+              </option>
+
+              <option>
+                6+ Guests
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Occasion
+            </label>
+
+            <select>
+
+              <option>
+                Regular Dinner
+              </option>
+
+              <option>
+                Birthday
+              </option>
+
+              <option>
+                Anniversary
+              </option>
+
+              <option>
+                Business Dinner
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>
+              Special Request
+            </label>
+
+            <textarea
+              placeholder="Any special requests?"
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn btn-gold"
+          >
+            Confirm Reservation
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+
+        <small>Visit Us</small>
+
+        <h2>
+          Come hungry. Leave happy.
+        </h2>
+
+      </div>
+
+
+      <div class="contact-info">
+
+        <div>
+          <strong>ADDRESS</strong>
+          Clifton, Karachi
+        </div>
+
+        <div>
+          <strong>OPENING HOURS</strong>
+          Tue — Sun · 6PM — 12AM
+        </div>
+
+        <div>
+          <strong>PHONE</strong>
+          +92 300 1234567
+        </div>
+
+        <div>
+          <strong>EMAIL</strong>
+          hello@saffronhouse.pk
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container">
+
+      © 2026 Saffron House.
+      Crafted with passion.
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+      navLinks.classList.toggle("active");
+
+      menuBtn.textContent =
+        navLinks.classList.contains("active")
+          ? "✕"
+          : "☰";
+
+    });
+
+
+    /* =========================
+       CLOSE MOBILE MENU
+    ========================= */
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navLinks.classList.remove("active");
+
+          menuBtn.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* =========================
+       MENU FILTER
+    ========================= */
+
+    const tabs =
+      document.querySelectorAll(".tab");
+
+    const menuItems =
+      document.querySelectorAll(".menu-item");
+
+
+    tabs.forEach(tab => {
+
+      tab.addEventListener("click", () => {
+
+        tabs.forEach(t =>
+          t.classList.remove("active")
+        );
+
+        tab.classList.add("active");
+
+        const category =
+          tab.dataset.category;
+
+
+        menuItems.forEach(item => {
+
+          if (
+            category === "all" ||
+            item.dataset.category === category
+          ) {
+
+            item.style.display = "grid";
+
+          } else {
+
+            item.style.display = "none";
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+    /* =========================
+       RESERVATION FORM
+    ========================= */
+
+    const reservationForm =
+      document.getElementById("reservationForm");
+
+
+    reservationForm.addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        const button =
+          reservationForm.querySelector("button");
+
+        button.textContent =
+          "Reservation Request Sent ✓";
+
+        button.style.background =
+          "#3b9b65";
+
+        reservationForm.reset();
+
+        setTimeout(() => {
+
+          button.textContent =
+            "Confirm Reservation";
+
+          button.style.background =
+            "";
+
+        }, 3500);
+
+      }
+    );
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+
+    /* =========================
+       HEADER SHADOW
+    ========================= */
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        const header =
+          document.querySelector("header");
+
+        if (window.scrollY > 50) {
+
+          header.style.boxShadow =
+            "0 10px 40px rgba(0,0,0,.35)";
+
+        } else {
+
+          header.style.boxShadow =
+            "none";
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
